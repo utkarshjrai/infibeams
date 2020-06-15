@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-range (ionChange)="getRange($event)" min="0" max="12" step="1" snaps="true" color="secondary" ></ion-range>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Hard disk type</ion-label>
+    <ion-select (ionChange)="applyFilter($event, 'hardDisk')" [(ngModel)]="singleValue4" okText="Okay" cancelText="Dismiss">
+      <ion-select-option value="SAS">SAS</ion-select-option>
+      <ion-select-option value="SSD">SSD</ion-select-option>
+      <ion-select-option value="SATA">SATA</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let r of ram">
+      <ion-label>{{r.value}}</ion-label>
+      <ion-checkbox (ionChange)="applyFilter(r, 'ram')" slot="end" [(ngModel)]="r.isChecked"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+  <!-- List of Text Items -->
+<ion-list *ngFor="let product of productList">
+  <ion-item class="item item-text-wrap">
+    <ion-label>{{product.Model}}</ion-label>
+    {{product.Price}}
+  </ion-item>
+</ion-list>
+</ion-content>
