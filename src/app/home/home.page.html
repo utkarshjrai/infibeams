@@ -7,8 +7,15 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-item>
+  <!-- <ion-item>
     <ion-range (ionChange)="getRange($event)" min="0" max="12" step="1" snaps="true" color="secondary" ></ion-range>
+  </ion-item> -->
+
+  <ion-item>
+    <ion-range pin="true" [(ngModel)]="dualValue2" (ionChange)="applyFilter($event, 'storage')" color="secondary" dualKnobs="true" min="0" max="12" step="1" snaps="true">
+    <ion-label slot="start">0GB</ion-label>
+    <ion-label slot="end">72TB</ion-label>
+  </ion-range>
   </ion-item>
 
   <ion-item>
